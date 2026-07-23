@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Birthday Cake</title>
+
+<style>
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(#eaf6ff,#ffffff);
+    font-family:Poppins,sans-serif;
+}
+
+.glass-box{
+    width:90%;
+    max-width:600px;
+    padding:25px;
+    border-radius:25px;
+    text-align:center;
+
+    background:rgba(255,255,255,0.4);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+h1{
+    font-style: italic;
+    color:#89a9c5;
+}
+
+.cake{
+    margin-top:30px;
+}
+
+.candles{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:5px;
+}
+
+.candle{
+    width:10px;
+    height:35px;
+    background:rgb(108, 227, 75);
+    border-radius:5px;
+    position:relative;
+    cursor:pointer;
+}
+
+.flame{
+    width:12px;
+    height:18px;
+    background:orange;
+    border-radius:50%;
+    position:absolute;
+    top:-18px;
+    left:-1px;
+    animation:flicker .5s infinite alternate;
+    box-shadow:
+        0 0 10px orange,
+        0 0 20px gold,
+        0 0 30px orange;
+}
+
+@keyframes flicker{
+    from{transform:scale(1);}
+    to{transform:scale(1.15);}
+}
+
+.top{
+    width:120px;
+    height:40px;
+    background:#9ed8ff;
+    border-radius:12px;
+    margin:auto;
+}
+
+.middle{
+    width:170px;
+    height:50px;
+    background:#6cc5ff;
+    border-radius:12px;
+    margin:5px auto;
+}
+
+.bottom{
+    width:220px;
+    height:60px;
+    background:#2196f3;
+    border-radius:12px;
+    margin:auto;
+}
+
+#celebration{
+    display:none;
+    margin-top:20px;
+
+   font-family:'Satisfy', cursive;
+font-size:42px;
+font-weight:normal;
+
+    color:#1325ca9f;
+
+    text-shadow:
+        0 0 8px rgba(255,128,171,0.6),
+        0 0 16px rgba(255,128,171,0.4);
+
+    animation: celebrateText 2s ease-in-out infinite;
+}
+
+@keyframes celebrateText{
+
+    0%,100%{
+        transform:translateY(0) scale(1);
+    }
+
+    50%{
+        transform:translateY(-8px) scale(1.05);
+    }
+}
+.firework{
+    position:fixed;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:gold;
+    pointer-events:none;
+    animation:explode 1.5s ease-out forwards;
+    z-index:9999;
+}
+
+@keyframes explode{
+    0%{
+        transform:scale(0);
+        opacity:1;
+    }
+    50%{
+        transform:scale(4);
+        opacity:1;
+    }
+    100%{
+        transform:scale(0);
+        opacity:0;
+    }
+}
+
+.glass-box{
+    position:relative;
+    z-index:2;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glass-box">
+
+   <h1></h1>
+   <img src="images/cake.png" class="wish_icon" width="100" align-items: center;>
+    <div class="cake">
+
+        <div class="candles">
+
+            <div class="candle" onclick="blow(this)">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle" onclick="blow(this)">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle" onclick="blow(this)">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle" onclick="blow(this)">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle" onclick="blow(this)">
+                <div class="flame"></div>
+            </div>
+
+        </div>
+
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+
+    </div>
+
+    <p>Tap every candle ✨</p>
+
+    <div id="celebration">
+     Happy Birthday Sivangii🎀 
+</div>
+</div>
+
+<div class="pink-flowers">
+     <span>🌸</span>
+     <span>🌸</span>
+     <span>🌸</span>
+     <span>🌸</span>
+     <span>🌸</span>
+     <span>🌸</span>
+</div>
+<script>
+let count = 0;
+
+function createFireworks(){
+
+    for(let i=0;i<30;i++){
+
+        let firework = document.createElement("div");
+
+        firework.classList.add("firework");
+
+        firework.style.left =
+            Math.random()*window.innerWidth + "px";
+
+        firework.style.top =
+            Math.random()*window.innerHeight + "px";
+
+        firework.style.background =
+            `hsl(${Math.random()*360},100%,50%)`;
+
+        document.body.appendChild(firework);
+
+        setTimeout(()=>{
+            firework.remove();
+        },1500);
+    }
+}
+function blow(candle){
+
+    const flame = candle.querySelector(".flame");
+
+    if(flame){
+        flame.remove();
+        count++;
+
+        if(count === 5){
+
+            createFireworks();
+
+            document.getElementById("celebration").style.display = "block";
+
+            let fireInterval = setInterval(createFireworks, 800);
+
+            setTimeout(()=>{
+                clearInterval(fireInterval);
+                window.location.href = "letter.html";
+            },7000);
+
+        }
+    }
+}
+</script>
+ 
+
+</body>
+</html>

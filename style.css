@@ -1,0 +1,1031 @@
+/* ==========================================================================
+   CSS Variables & Design System
+   ========================================================================== */
+:root {
+    --bg-cream: #EFECE6;
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --primary-blue: #1C64F2;
+    --primary-blue-hover: #134BB8;
+    --dark-text: #1E293B;
+    --muted-text: #64748B;
+    --gold-accent: #EAB308;
+    --cake-dark: #1E293B;
+    --cake-gold: #D97706;
+    
+    --font-sans: 'Poppins', -apple-system, sans-serif;
+    --font-handwriting: 'Caveat', cursive;
+    
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 12px;
+    --transition-speed: 0.4s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #C8C3BC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Mobile Viewport Container (Frame)
+   ========================================================================== */
+.phone-frame {
+    width: 390px;
+    height: 844px;
+    background-color: var(--bg-cream);
+    border-radius: 40px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+canvas#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   Screen Management & Transitions
+   ========================================================================== */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   Glassmorphism Cards & Components
+   ========================================================================== */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.primary-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 16px 28px;
+    font-size: 15px;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(28, 100, 242, 0.3);
+}
+
+.secondary-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 14px 24px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 16px rgba(28, 100, 242, 0.25);
+}
+
+.bottom-btn {
+    position: absolute;
+    bottom: 30px;
+    width: calc(100% - 48px);
+}
+
+/* ==========================================================================
+   Screen 1: Welcome Screen
+   ========================================================================== */
+#screen-1 {
+    justify-content: center;
+}
+
+.avatar-container {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.welcome-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--dark-text);
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    color: var(--muted-text);
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   Screen 2: Birthday Greeting Screen
+   ========================================================================== */
+.main-title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--dark-text);
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+}
+
+.illustration-box {
+    width: 100%;
+    height: 180px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.name-tag {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+}
+
+.emoji-row {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.greeting-text {
+    font-size: 13px;
+    color: var(--muted-text);
+}
+
+.author-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-top: 8px;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   Screen 3: Gallery
+   ========================================================================== */
+.header-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar-mini {
+    font-size: 30px;
+}
+
+.gallery-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+.gallery-subtitle {
+    font-size: 12px;
+    color: var(--muted-text);
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+}
+
+.memory-card {
+    background: white;
+    padding: 10px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.memory-card img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.memory-caption {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 8px;
+    color: var(--dark-text);
+}
+
+.tag-badge {
+    margin-top: 20px;
+    background: rgba(28, 100, 242, 0.1);
+    color: var(--primary-blue);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+/*#screen-3.active{
+    opacity: 1;
+    visibility: visible;
+    animation: memoriesOpen 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes memoriesOpen{
+    0%{
+        opacity:0;
+        transform:translateY(80px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+}*/
+
+/* ==========================================================================
+   Screen 4: Cake & Candles
+   ========================================================================== */
+.compact-title { font-size: 24px; margin-bottom: 2px; }
+.sub-heading { font-size: 14px; font-weight: 700; color: var(--muted-text); margin-bottom: 30px; }
+
+.cake-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 30px;
+}
+
+.candles-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.candle {
+    width: 8px;
+    height: 35px;
+    background: linear-gradient(to bottom, #F43F5E, #E11D48);
+    border-radius: 4px;
+    position: relative;
+}
+
+.flame {
+    width: 12px;
+    height: 18px;
+    background: #F59E0B;
+    border-radius: 50% 50% 20% 20%;
+    position: absolute;
+    top: -18px;
+    left: -2px;
+    box-shadow: 0 0 10px #F59E0B;
+    animation: flicker 0.6s infinite alternate;
+    transition: opacity 0.5s ease;
+}
+
+.flame.extinguished {
+    opacity: 0;
+}
+
+@keyframes flicker {
+    0% { transform: scale(1) rotate(-2deg); }
+    100% { transform: scale(1.1) rotate(2deg); }
+}
+
+.cake-tier {
+    background-color: var(--cake-dark);
+    border-radius: 12px;
+    border-bottom: 6px solid var(--cake-gold);
+}
+
+.top-tier { width: 140px; height: 35px; }
+.middle-tier { width: 190px; height: 45px; margin-top: 4px; }
+.bottom-tier { width: 240px; height: 55px; margin-top: 4px; }
+
+.action-btn {
+    background-color: white;
+    color: var(--dark-text);
+    padding: 12px 24px;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.wish-prompt {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted-text);
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   Screen 5: Interactive Gift Unwrap
+   ========================================================================== */
+#screen-5 {
+    justify-content: center;
+}
+
+.gift-box-wrapper {
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.gift-box {
+    width: 150px;
+    height: 120px;
+    background-color: var(--primary-blue);
+    border-radius: 0 0 16px 16px;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(28, 100, 242, 0.3);
+}
+
+.gift-lid {
+    width: 170px;
+    height: 35px;
+    background-color: #2563EB;
+    border-radius: 8px;
+    position: absolute;
+    top: -30px;
+    left: -10px;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+}
+
+.gift-lid.open {
+    transform: translateY(-120px) rotate(-15deg);
+}
+
+.ribbon-bow {
+    width: 30px;
+    height: 30px;
+    background-color: var(--gold-accent);
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    left: 70px;
+}
+
+.gift-body::before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 100%;
+    background-color: var(--gold-accent);
+    left: 63px;
+}
+
+.unwrap-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--dark-text);
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   Screen 6: Letter / Typing Animation
+   ========================================================================== */
+.letter-card {
+    text-align: left;
+    height: 680px;
+    overflow-y: auto;
+}
+
+.letter-header {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+}
+
+.letter-salutation {
+    font-family: var(--font-handwriting);
+    font-size: 22px;
+    color: var(--dark-text);
+    margin-bottom: 12px;
+}
+
+.letter-body {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--dark-text);
+    white-space: pre-wrap;
+}
+
+.letter-footer {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-top: 16px;
+}
+.flame.extinguished{
+    opacity:0;
+    transform:translateY(-20px);
+    transition:.5s;
+}
+
+.gift-lid.open{
+    transform:translateY(-120px) rotate(-18deg);
+}
+
+.screen{
+    transition:all .5s ease;
+}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#eaf6ff;
+    text-align:center;
+}
+
+.container{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+.birthday_video{
+    width: "250";
+}
+
+h1{
+    color:#2133f3;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#2196f3;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+.photo-animation{
+    border-radius: 20px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.video-animation{
+    opacity: 0;
+    border-radius: 30px;
+    animation: popIn 1.2s ease forwards;
+}
+
+@keyframes popIn{
+    0%{
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    70%{
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.container{
+    background: rgba(255, 255, 255, 0.15); /* transparent white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+
+    margin: 40px auto;
+    text-align: center;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+/* Hero Section */
+.hero{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Flowers */
+.flowers span{
+    position: absolute;
+    top: -50px;
+    font-size: 28px;
+    color: #7b69ff;
+    animation: fall linear infinite;
+}
+
+/* Different Positions & Speeds */
+.flowers span:nth-child(1){left:5%; animation-duration:8s;}
+.flowers span:nth-child(2){left:15%; animation-duration:10s;}
+.flowers span:nth-child(3){left:25%; animation-duration:7s;}
+.flowers span:nth-child(4){left:35%; animation-duration:11s;}
+.flowers span:nth-child(5){left:45%; animation-duration:9s;}
+.flowers span:nth-child(6){left:55%; animation-duration:12s;}
+.flowers span:nth-child(7){left:65%; animation-duration:8s;}
+.flowers span:nth-child(8){left:75%; animation-duration:10s;}
+.flowers span:nth-child(9){left:85%; animation-duration:7s;}
+.flowers span:nth-child(10){left:95%; animation-duration:9s;}
+
+/* Falling Animation */
+@keyframes fall{
+    0%{
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.7;
+    }
+}
+
+/* Keep container above flowers */
+.container{
+    position: relative;
+    z-index: 2;
+}
+body{
+    margin:0;
+    background:#fdf7f1;
+    font-family:Poppins,sans-serif;
+}
+
+/* body shake */
+body{
+    margin:0;
+    overflow-y: auto;
+}
+.container{
+    max-width:400px;
+    margin:auto;
+    padding:20px;
+    text-align:center;
+    
+}
+
+h1{
+    color:#1e88e5;
+    font-size:30px;
+}
+
+
+/* Top 4 Photos */
+
+.memory-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.frame{
+    background:white;
+    padding:5px;
+    border-radius:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.frame img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.frame p{
+    margin-top:8px;
+}
+
+/* Rectangle Photo */
+
+.rectangle-frame{
+    margin-top:20px;
+    background:white;
+    padding:5px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.rectangle-frame img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* Bottom Row */
+
+.bottom-row{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.small-frame{
+    width:100px;
+    height:100px;
+    background:white;
+    padding:3px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.small-frame img,
+.small-frame video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+button{
+    margin-top:30px;
+    padding:14px 30px;
+    border:none;
+    border-radius:30px;
+    background:#1e88e5;
+    color:white;
+    font-size:10px;
+}
+h1{
+    font-family:cursive;
+    color:#1e88e5;
+    font-size:30px;
+    font-weight:normal;
+    letter-spacing:1px;
+}
+
+.frame p,
+.rectangle-frame p{
+    font-family:'Caveat',sans-serif;
+    font-weight:600;
+}
+.frame,
+.rectangle-frame,
+.small-frame{
+    transition:all 0.4s ease;
+}
+.frame,
+.rectangle-frame,
+.small-frame{
+    transition:all 0.35s ease;
+    cursor:pointer;
+}
+
+.frame:hover,
+.rectangle-frame:hover,
+.small-frame:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.12),
+        0 5px 12px rgba(0,0,0,0.08);
+}
+.frame:hover,
+.rectangle-frame:hover,
+.small-frame:hover{
+    transform:translateY(-5px);
+}
+.frame,
+.rectangle-frame,
+.small-frame{
+    transition:all 0.4s ease;
+}
+
+/*memories container*/
+.memories-container{
+    width: 90%;
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 25px;
+
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 25px;
+
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+
+    opacity: 0;
+    transform: translateY(80px);
+    animation: memoriesOpen 1s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+button{
+    margin-top:30px;
+    padding:14px 30px;
+    border:none;
+    border-radius:30px;
+    background:#1e88e5;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+/* Hover Effect */
+button:hover{
+    transform:translateY(-5px) scale(1.05);
+    background:#0d15fd;
+    box-shadow:0 10px 25px rgba(30,136,229,0.35);
+}
+button:hover{
+    box-shadow:
+        0 0 15px rgba(30,136,229,0.4),
+        0 0 30px rgba(30,136,229,0.2);
+}
+.love-icon{
+    width:70px;
+    height:70px;
+    vertical-align:middle;
+    margin-left:2px;
+    border-radius:50%;
+}
+.love-icon{
+  animation: swingCat 1s ease-in-out infinite;
+}
+
+@keyframes swingCat{
+    0%,100%{
+        transform: rotate(-5deg);
+    }
+    50%{
+        transform: rotate(5deg);
+    }
+}
+
+/* Page Transition */
+
+body{
+    margin:0;
+    background: linear-gradient(
+        135deg,
+        #eaf6ff,
+        #f8f2ff,
+        #fff6fb
+    );
+}
+
+
+/* Page Exit */
+.page-exit{
+    animation: pageClose 0.6s ease forwards;
+}
+
+@keyframes pageClose{
+    from{
+        opacity:1;
+        transform:translateY(0);
+    }
+    to{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+}
+
+h1{
+    font-family: 'Cinzel', serif;
+}
+p{
+    font-family: 'Caveat', cursive;
+    font-size: 19px;
+}
+
+/*cake.html font */
+h1{
+    color:#1e88e5;
+    font-family:'Great Vibes', cursive !important;
+    font-weight:normal;
+    font-size: 30px;
+}
+
+.memories-container{
+    opacity: 0;
+    transform: translateY(80px);
+    animation: memoriesOpen 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+@keyframes memoriesOpen{
+    from{
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.memories-container{
+    opacity: 0;
+    transform: translateY(80px);
+    animation: memoriesOpen 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes memoriesOpen{
+    0%{
+        opacity: 0;
+        transform: translateY(80px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cat-animation{
+    animation: swingCat 2s ease-in-out infinite;
+}
+
+@keyframes swingCat{
+    0%,100%{
+        transform: rotate(-5deg);
+    }
+    50%{
+        transform: rotate(5deg);
+    }
+}
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+
+.hearts span{
+    position:absolute;
+    bottom:-50px;
+    font-size:28px;
+    animation:floatHeart 8s linear infinite;
+}
+
+.hearts span:nth-child(1){left:10%;}
+.hearts span:nth-child(2){left:30%;}
+.hearts span:nth-child(3){left:50%;}
+.hearts span:nth-child(4){left:70%;}
+.hearts span:nth-child(5){left:90%;}
+
+@keyframes floatHeart{
+    from{
+        transform:translateY(0);
+        opacity:0;
+    }
+    to{
+        transform:translateY(-110vh);
+        opacity:1;
+    }
+}
+
+/* pink flowers animation */
+/* Pink Flower Animation */
+
+.pink-flowers{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.pink-flowers span{
+    position:absolute;
+    top:-50px;
+    font-size:30px;
+    animation:flowerFall linear infinite;
+}
+
+/* Different positions and speeds */
+
+.pink-flowers span:nth-child(1){
+    left:10%;
+    animation-duration:8s;
+}
+
+.pink-flowers span:nth-child(2){
+    left:25%;
+    animation-duration:10s;
+}
+
+.pink-flowers span:nth-child(3){
+    left:40%;
+    animation-duration:7s;
+}
+
+.pink-flowers span:nth-child(4){
+    left:60%;
+    animation-duration:9s;
+}
+
+.pink-flowers span:nth-child(5){
+    left:75%;
+    animation-duration:11s;
+}
+
+.pink-flowers span:nth-child(6){
+    left:90%;
+    animation-duration:8s;
+}
+
+@keyframes flowerFall{
+    0%{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0.7;
+    }
+}
