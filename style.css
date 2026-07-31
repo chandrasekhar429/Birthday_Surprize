@@ -1135,8 +1135,8 @@ h1{
 }
 
 .photo-gallery img{
-    width:100px;
-    height:100px;
+    width:130px;
+    height:130px;
     object-fit:cover;
     border-radius:10px;
     border:2px solid #ffffff;
