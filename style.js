@@ -117,4 +117,51 @@ function goToCake(){
 
 }
 
- 
+// ===== YES / NO BUTTON =====
+
+window.addEventListener("DOMContentLoaded", function () {
+
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const box = document.querySelector(".button-box");
+
+    if (!yesBtn || !noBtn || !box) return;
+
+    yesBtn.addEventListener("click", function () {
+        window.location.href = "birthday.html";
+    });
+
+    function moveButton() {
+
+        const maxX = box.clientWidth - noBtn.offsetWidth;
+        const maxY = box.clientHeight - noBtn.offsetHeight;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    // Desktop
+    document.addEventListener("mousemove", function (e) {
+
+        const rect = noBtn.getBoundingClientRect();
+
+        if (
+            e.clientX > rect.left - 70 &&
+            e.clientX < rect.right + 70 &&
+            e.clientY > rect.top - 70 &&
+            e.clientY < rect.bottom + 70
+        ) {
+            moveButton();
+        }
+    });
+
+    // Mobile
+    noBtn.addEventListener("touchstart", function (e) {
+        e.preventDefault();
+        moveButton();
+    });
+
+});

@@ -3,21 +3,50 @@
 <head>
     <title>Welcome</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 <div class="container">
-    <img src="images/Dm.jpg" width="150" class="photo-animation">
-    <h1>Hello Sivangi
-    <img src="images/pandasfighting1.png" class="love-icon" >
-</h1>
-    <p>I am your Dongha Mokham i created this just for your Biethday Spical To You..✨</p>
 
-    <a href="birthday.html">
-        <button> BEGIN YOUR SURPRISE 🎁 </button>
-    </a>
+    <img src="images/Dm.jpg" width="150" class="photo-animation">
+
+    <h1 class="hello-title">
+        Hello Sivangi
+        <img src="images/pandasfighting1.png" class="love-icon">
+    </h1>
+
+    <p>
+        I am your " Dongha Mokham " I created this just for your birthday special Begin your surprise✨
+    </p>
+
+    <div class="gift" onclick="openGift()">
+
+        <!-- Ribbon Emoji -->
+        <div class="gift-bow">🎀</div>
+
+        <!-- Gift Lid -->
+        <div class="lid"></div>
+
+        <!-- Gift Box -->
+        <div class="box"></div>
+
+        <!-- Ribbons -->
+        <div class="ribbon-v"></div>
+        <div class="ribbon-h"></div>
+
+    </div>
+
 </div>
 
-</body>
-</html>  
+<script>
+function openGift(){
+    document.querySelector(".lid").classList.add("open");
+
+    setTimeout(function(){
+        window.location.href="birthday.html";
+    },800);
+}
+</script>
